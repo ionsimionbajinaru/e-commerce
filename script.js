@@ -241,12 +241,6 @@
 //     }
 // ];
 
-// ------------  SideBar Setup  -----------
-// Folosim const cand:
-// - cream o variabila in care retinem un element din pagina
-// - cream o functie
-// - cream o variabila a carei valoare stim ca nu vrem sa se modifice
-
 
 let searchBar = document.querySelector(".input-navbar-container");
 let searchIcon = document.querySelector(".search-icon");
@@ -262,21 +256,16 @@ const createProductCards = async () => {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add("product-card-container");
 
-        // aici am creat imaginea
         const cardImageLink = document.createElement('a');
         cardImageLink.setAttribute('href', `/product.html?id=${data[i].id}`);
 
-        // <a href="/product?id=1"></a>
         const cardImage = document.createElement('div');
         cardImage.classList.add("product-card-image");
         cardImage.style.backgroundImage = `url('${data[i].image}')`;
 
-        // aici am adaugat imaginea in link
-        // apoi am adaugat link-ul in card
         cardImageLink.appendChild(cardImage);
         cardContainer.appendChild(cardImageLink);
 
-        // aici am creat div-ul pentru continut
         const cardContent = document.createElement('div');
         cardContent.classList.add("product-card-content");
         cardContent.innerHTML = `
@@ -285,16 +274,12 @@ const createProductCards = async () => {
             <p class="product-card-price"> $ ${data[i].price} </p>
         `;
 
-        // aici am adaugat content-ul in card
         cardContainer.appendChild(cardContent);
 
-        // aici am creat butonul
         const cardButton = document.createElement("button");
         cardButton.classList.add("product-card-button");
         cardButton.innerText = 'ADD TO CART';
 
-        // Pe forma asta NU poti transmite parametrii
-        // cardButton.addEventListener("click", addToCart);
         cardButton.addEventListener("click", () => {
             const productData = {
                 id: data[i].id,
@@ -306,10 +291,8 @@ const createProductCards = async () => {
             addToCart(productData);
         });
 
-        // aici am adaugat butonul in card
         cardContainer.appendChild(cardButton);
 
-        // aici am adaugat cardul in sectiunea de carduri
         productCardsContainer.appendChild(cardContainer);
     }
     
@@ -362,12 +345,3 @@ window.onload = () => {
     updateCartProducts();
     emptyCartMessage();
 };
-
-
-
-
-
-// De trimis resurse pentru:
-// - CSS selectors
-// - const vs let
-// - backticks vs single quotes vs double quotes
