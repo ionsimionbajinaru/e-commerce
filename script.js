@@ -345,3 +345,14 @@ window.onload = () => {
     updateCartProducts();
     emptyCartMessage();
 };
+
+// Dynamic background gradient based on mouse position
+document.addEventListener('mousemove', (e) => {
+    const xPercent = (e.clientX / window.innerWidth) * 100;
+    const yPercent = (e.clientY / window.innerHeight) * 100;
+    document.body.style.background = `radial-gradient(circle at ${xPercent}% ${yPercent}%, var(--backgroundGray), var(--green))`;
+});
+
+document.addEventListener('mouseleave', () => {
+    document.body.style.background = 'radial-gradient(circle at center, var(--backgroundGray), var(--green))';
+});
